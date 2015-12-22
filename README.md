@@ -2,6 +2,4 @@
 
 ## TODO
 
-* show 'in progress' / 'is building'
-* show user avatar
-* display GIF
+https://www.pivotaltracker.com/n/projects/1503978
