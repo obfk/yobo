@@ -14,6 +14,10 @@
  *= require_self
  */
 
+h2, h3 {
+  margin: 10px 0;
+}
+
 section {
   background: #ddd;
   padding: 1rem;
@@ -21,9 +25,9 @@ section {
 }
 
 section.failed {
-  background: red;
+  background: #ff3232;
 }
 
 section.success {
-  background: green;
+  background: #7fbf7f;
 }
