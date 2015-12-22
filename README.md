@@ -2,9 +2,6 @@
 
 ## TODO
 
-* filtering:
-  * excluding automated merge-builds
-  * always show master
-  * always show recently built branches
+* only show latest master (CONST)
 * show user avatar
 * display GIF
