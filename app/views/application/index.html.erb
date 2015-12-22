@@ -1,0 +1,23 @@
+<% if @recent_builds %>
+  <% @recent_builds.each do |recent_build| %>
+    <section class=<%= recent_build['outcome'] %>>
+      <h1><%= recent_build['reponame'] %> / <%= recent_build['branch'] %></h1>
+      <h3>
+        <% if recent_build['all_commit_details'].length > 0 %>
+          <%= recent_build['all_commit_details'].first['committer_name']%>
+          <em> and </em>
+          <%= recent_build['all_commit_details'].first['author_name']%>
+        <% end %>
+      </h3>
+    </section>
+  <% end %>
+
+  <script type="text/javascript">
+    setTimeout(function(){
+      location = ''
+    }, 30000)
+  </script>>
+
+<% else %>
+  <h3>enter a token</h3>
+<% end %>
