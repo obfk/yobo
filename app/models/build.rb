@@ -14,11 +14,13 @@ class Build < ActiveRecord::Base
   private
 
   def self.filter_builds(builds)
-    builds.reject do |build|
-      build["status"] == 'not_run' ||
-      build["status"] == 'canceled' ||
-      build["branch"] == 'green-latest' ||
-      build["reponame"] != 'tracker-frontend'
+    results = builds.reject do |build|
+      build['status'] == 'not_run' ||
+      build['status'] == 'canceled' ||
+      build['branch'] == 'green-latest' ||
+      build['reponame'] != 'tracker-frontend'
     end
+
+    results.uniq { |result| result['branch'] }
   end
 end

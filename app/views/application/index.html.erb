@@ -2,7 +2,7 @@
   <% @recent_builds.each do |recent_build| %>
     <section class=<%= recent_build['outcome'] %>>
       <h2>
-        #<%= recent_build['build_num'] %>   <%= recent_build['branch'] %>
+        TF / <%= recent_build['branch'] %>
       </h2>
 
       <h3>
@@ -12,7 +12,7 @@
           <%= recent_build['all_commit_details'].first['author_name']%>
         <% end %>
       </h3>
-      <h4><em><%= recent_build['stop_time'] %></em></h4>
+      <h4><em><%= time_ago_in_words(recent_build['stop_time']) %></em></h4>
     </section>
   <% end %>
 
