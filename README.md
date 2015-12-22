@@ -2,7 +2,6 @@
 
 ## TODO
 
-* only show latest master (CONST)
-* remove previous branch failures when fixed
+* show 'in progress' / 'is building'
 * show user avatar
 * display GIF
