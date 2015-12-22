@@ -12,7 +12,11 @@
           <%= recent_build['all_commit_details'].first['author_name']%>
         <% end %>
       </h3>
-      <h4><em><%= time_ago_in_words(recent_build['stop_time']) %></em></h4>
+      <% if recent_build['stop_time'] %>
+        <h4><em><%= time_ago_in_words(recent_build['stop_time']) %></em></h4>
+      <% else %>
+        <h4><em>building...</em></h4>
+      <% end %>
     </section>
   <% end %>
 
