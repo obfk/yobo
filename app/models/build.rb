@@ -16,6 +16,7 @@ class Build < ActiveRecord::Base
   def self.filter_builds(builds)
     builds.reject do |build|
       build["status"] == 'not_run' ||
+      build["status"] == 'canceled' ||
       build["branch"] == 'green-latest' ||
       build["reponame"] != 'tracker-frontend'
     end
