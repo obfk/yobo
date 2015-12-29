@@ -1,19 +1,46 @@
-<% if @recent_builds %>
-  <% @recent_builds.each do |recent_build| %>
-    <section class=<%= recent_build['outcome'] %>>
+<% if @master %>
+
+  <hr />
+
+  <section class=<%= @master['outcome'] %>>
+    <h2>
+      TF / <%= @master['branch'] %>
+    </h2>
+
+    <h3>
+      <% if @master['all_commit_details'].length > 0 %>
+        <%= @master['all_commit_details'].first['committer_name']%>
+        <em> and </em>
+        <%= @master['all_commit_details'].first['author_name']%>
+      <% end %>
+    </h3>
+    <% if @master['stop_time'] %>
+      <h4><em><%= time_ago_in_words(@master['stop_time']) %></em></h4>
+    <% else %>
+      <h4><em>building...</em></h4>
+    <% end %>
+  </section>
+
+  <hr />
+
+<% end %>
+
+<% if @recent %>
+  <% @recent.each do |recent| %>
+    <section class=<%= recent['outcome'] %>>
       <h2>
-        TF / <%= recent_build['branch'] %>
+        TF / <%= recent['branch'] %>
       </h2>
 
       <h3>
-        <% if recent_build['all_commit_details'].length > 0 %>
-          <%= recent_build['all_commit_details'].first['committer_name']%>
+        <% if recent['all_commit_details'].length > 0 %>
+          <%= recent['all_commit_details'].first['committer_name']%>
           <em> and </em>
-          <%= recent_build['all_commit_details'].first['author_name']%>
+          <%= recent['all_commit_details'].first['author_name']%>
         <% end %>
       </h3>
-      <% if recent_build['stop_time'] %>
-        <h4><em><%= time_ago_in_words(recent_build['stop_time']) %></em></h4>
+      <% if recent['stop_time'] %>
+        <h4><em><%= time_ago_in_words(recent['stop_time']) %></em></h4>
       <% else %>
         <h4><em>building...</em></h4>
       <% end %>

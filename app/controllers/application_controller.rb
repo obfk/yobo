@@ -5,7 +5,9 @@ class ApplicationController < ActionController::Base
 
   def index
     if params['token']
-      @recent_builds = Build.recent(params['token'])
+      build = Build.new(params['token'])
+      @master = build.master
+      @recent = build.recent
     end
   end
 end
