@@ -3,15 +3,16 @@
   <hr />
 
   <section class=<%= @master['outcome'] %>>
-    <h2>
+    <h1>
       TF / <%= @master['branch'] %>
-    </h2>
+    </h1>
 
     <h3>
       <% if @master['all_commit_details'].length > 0 %>
-        <%= @master['all_commit_details'].first['committer_name']%>
-        <em> and </em>
-        <%= @master['all_commit_details'].first['author_name']%>
+        <%= author_names(
+          @master['all_commit_details'].first['committer_name'],
+          @master['all_commit_details'].first['author_name']
+        ) %>
       <% end %>
     </h3>
     <% if @master['stop_time'] %>
@@ -28,15 +29,16 @@
 <% if @recent %>
   <% @recent.each do |recent| %>
     <section class=<%= recent['outcome'] %>>
-      <h2>
+      <h1>
         TF / <%= recent['branch'] %>
-      </h2>
+      </h1>
 
       <h3>
         <% if recent['all_commit_details'].length > 0 %>
-          <%= recent['all_commit_details'].first['committer_name']%>
-          <em> and </em>
-          <%= recent['all_commit_details'].first['author_name']%>
+          <%= author_names(
+            recent['all_commit_details'].first['committer_name'],
+            recent['all_commit_details'].first['author_name']
+          ) %>
         <% end %>
       </h3>
       <% if recent['stop_time'] %>
