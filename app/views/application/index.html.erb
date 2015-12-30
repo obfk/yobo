@@ -10,8 +10,8 @@
     <h3>
       <% if @master['all_commit_details'].length > 0 %>
         <%= author_names(
-          @master['all_commit_details'].first['committer_name'],
-          @master['all_commit_details'].first['author_name']
+          @master['all_commit_details'].last['committer_name'],
+          @master['all_commit_details'].last['author_name']
         ) %>
       <% end %>
     </h3>
@@ -36,8 +36,8 @@
       <h3>
         <% if recent['all_commit_details'].length > 0 %>
           <%= author_names(
-            recent['all_commit_details'].first['committer_name'],
-            recent['all_commit_details'].first['author_name']
+            recent['all_commit_details'].last['committer_name'],
+            recent['all_commit_details'].last['author_name']
           ) %>
         <% end %>
       </h3>
