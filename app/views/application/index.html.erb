@@ -1,22 +1,22 @@
-<% if @master %>
+<% if @master_frontend %>
 
   <hr />
 
-  <section class=<%= @master['outcome'] %>>
+  <section class=<%= @master_frontend['outcome'] %>>
     <h1>
-      TF / <%= @master['branch'] %>
+      TF / <%= @master_frontend['branch'] %>
     </h1>
 
     <h3>
-      <% if @master['all_commit_details'].length > 0 %>
+      <% if @master_frontend['all_commit_details'].length > 0 %>
         <%= author_names(
-          @master['all_commit_details'].last['committer_name'],
-          @master['all_commit_details'].last['author_name']
+          @master_frontend['all_commit_details'].last['committer_name'],
+          @master_frontend['all_commit_details'].last['author_name']
         ) %>
       <% end %>
     </h3>
-    <% if @master['stop_time'] %>
-      <h4><em><%= time_ago_in_words(@master['stop_time']) %></em></h4>
+    <% if @master_frontend['stop_time'] %>
+      <h4><em><%= time_ago_in_words(@master_frontend['stop_time']) %></em></h4>
     <% else %>
       <h4><em>building...</em></h4>
     <% end %>
@@ -27,34 +27,35 @@
 <% end %>
 
 <% if @recent %>
-  <% @recent.each do |recent| %>
-    <section class=<%= recent['outcome'] %>>
-      <h1>
-        TF / <%= recent['branch'] %>
-      </h1>
+  <div class='recent'>
+    <% @recent.each do |recent| %>
+      <section class=<%= recent['outcome'] %>>
+        <h1>
+          TF / <%= recent['branch'] %>
+        </h1>
 
-      <h3>
-        <% if recent['all_commit_details'].length > 0 %>
-          <%= author_names(
-            recent['all_commit_details'].last['committer_name'],
-            recent['all_commit_details'].last['author_name']
-          ) %>
+        <h3>
+          <% if recent['all_commit_details'].length > 0 %>
+            <%= author_names(
+              recent['all_commit_details'].last['committer_name'],
+              recent['all_commit_details'].last['author_name']
+            ) %>
+          <% end %>
+        </h3>
+        <% if recent['stop_time'] %>
+          <h4><em><%= time_ago_in_words(recent['stop_time']) %></em></h4>
+        <% else %>
+          <h4><em>building...</em></h4>
         <% end %>
-      </h3>
-      <% if recent['stop_time'] %>
-        <h4><em><%= time_ago_in_words(recent['stop_time']) %></em></h4>
-      <% else %>
-        <h4><em>building...</em></h4>
-      <% end %>
-    </section>
-  <% end %>
+      </section>
+    <% end %>
 
-  <script type="text/javascript">
-    setTimeout(function(){
-      location = ''
-    }, 30000)
-  </script>
-
+    <script type="text/javascript">
+      setTimeout(function(){
+        location = ''
+      }, 30000)
+    </script>
+  </div>
 <% else %>
   <h3>enter a token</h3>
 <% end %>

@@ -13,8 +13,8 @@ class Build
     filter_general_builds(@builds)
   end
 
-  def master
-    select_master_build(@builds)
+  def master_frontend
+    select_master_build(@builds, 'tracker-frontend')
   end
 
   private
@@ -31,7 +31,10 @@ class Build
     results.uniq { |result| result['branch'] }
   end
 
-  def select_master_build(builds)
-    builds.select {|build| build['branch'] == 'master'}.first
+  def select_master_build(builds, reponame)
+    builds.select {|build|
+      build['branch'] == 'master' &&
+      build['reponame'] == reponame
+    }.first
   end
 end

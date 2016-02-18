@@ -22,10 +22,21 @@ h1, h2, h3, h4 {
   margin: 0.5rem 0;
 }
 
+.recent {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+}
+
 section {
   background: #ddd;
   padding: 0.5rem 1rem;
   margin: 0.5rem;
+}
+
+.recent section {
+  width: 47%;
+
 }
 
 section.failed {

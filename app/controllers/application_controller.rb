@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   def index
     if params['token']
       build = Build.new(params['token'])
-      @master = build.master
+      @master_frontend = build.master_frontend
       @recent = build.recent
     end
   end
